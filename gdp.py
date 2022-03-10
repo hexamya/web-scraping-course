@@ -9,6 +9,7 @@ soup = BeautifulSoup(response.content, 'html5lib')
 print(Fore.BLUE)
 print(Style.RESET_ALL)
 
+requests.utils.default_headers()
 
 # for id selection -----> #
 # for class selection -----> .
@@ -27,8 +28,6 @@ with open('gdp.txt', 'w', encoding='utf-8') as fp:
     fp.write(STR)
 
 { i[0]: i[1:]  for i in LIST }
-
-
 
 GDP = pd.DataFrame({HEADER[j]:[ i[j] for i in LIST] for j in range(len(HEADER))})
 
