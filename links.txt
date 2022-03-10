@@ -1,0 +1,6 @@
+https://docs.djangoproject.com/en/4.0/
+https://www.megaweb.ir/api/digital-money
+https://apipheny.io/free-api/
+https://www.worldometers.info/gdp/gdp-by-country/
+https://data.mendeley.com/research-data/
+https://www.goal.com/en/live-scores
