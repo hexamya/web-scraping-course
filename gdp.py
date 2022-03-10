@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import pandas as pd
 
 response = requests.get('https://www.worldometers.info/gdp/gdp-by-country/')
 
@@ -14,6 +15,21 @@ print(Style.RESET_ALL)
 
 table = soup.select_one('#example2')
 
-[ i.getText() for i in table.thead.tr.findAll('th') ]
+HEADER = [ i.getText() for i in table.thead.tr.findAll('th') ]
 
-[[i.getText() for i in j.findAll('td')] for j in table.tbody.findAll('tr')]
+LIST = [[i.getText() for i in j.findAll('td')] for j in table.tbody.findAll('tr')]
+
+STR = "\n".join([" - ".join([i.getText() for i in j.findAll('td')]) for j in table.tbody.findAll('tr')])
+
+print(STR)
+
+with open('gdp.txt', 'w', encoding='utf-8') as fp:
+    fp.write(STR)
+
+{ i[0]: i[1:]  for i in LIST }
+
+
+
+GDP = pd.DataFrame({HEADER[j]:[ i[j] for i in LIST] for j in range(len(HEADER))})
+
+GDP.to_excel('gdp.xlsx')
