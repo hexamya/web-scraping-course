@@ -38,3 +38,4 @@ print(bpi['time']['updated'])
 
 c = bpi['bpi']['USD']
 print('\n'.join([f"{i}: {c[i]}" for i in c]))
+
